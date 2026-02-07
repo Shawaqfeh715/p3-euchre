@@ -92,7 +92,21 @@ std::istream & operator>>(std::istream &is, Suit &suit) {
 
 
 /////////////// Write your implementation for Card below ///////////////
+Card::Card(){
+    assert(false);
+}
 
+Suit Suit_next(Suit suit){
+     assert(false);
+}
+
+bool Card_less(const Card &a,const Card &b, Suit trump){
+     assert(false);
+}
+
+std::ostream & operator <<(std::ostream &os,const Card &card){
+      assert(false);
+}
 
 // NOTE: We HIGHLY recommend you check out the operator overloading
 // tutorial in the project spec before implementing
