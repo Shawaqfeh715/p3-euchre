@@ -102,6 +102,11 @@ Card::Card(Rank rank_in, Suit suit_in)
 : rank(rank_in), suit(suit_in) {
 }
 
+// getter functions
+Rank Card::get_rank() const {
+  return rank;
+}
+
 Suit Suit_next(Suit suit){
      assert(false);
 }
