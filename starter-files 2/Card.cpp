@@ -111,6 +111,11 @@ Suit Card::get_suit() const {
   return suit;
 }
 
+// checking for a face card
+bool Card::is_face_or_ace() const {
+  return rank >= JACK;
+}
+
 Suit Suit_next(Suit suit){
      assert(false);
 }
