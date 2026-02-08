@@ -105,7 +105,8 @@ bool Card_less(const Card &a,const Card &b, Suit trump){
 }
 
 std::ostream & operator <<(std::ostream &os,const Card &card){
-      assert(false);
+      os << card.get_rank() << " of " << card.get_suit();
+      return os;
 }
 
 // NOTE: We HIGHLY recommend you check out the operator overloading
