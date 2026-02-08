@@ -92,8 +92,8 @@ std::istream & operator>>(std::istream &is, Suit &suit) {
 
 
 /////////////// Write your implementation for Card below ///////////////
-Card::Card(){
-    assert(false);
+// default constructor
+Card::Card() : rank(TWO), suit(SPADES) {
 }
 
 Suit Suit_next(Suit suit){
