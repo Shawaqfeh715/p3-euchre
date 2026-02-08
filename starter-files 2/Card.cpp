@@ -148,6 +148,10 @@ bool Card::is_left_bower(Suit trump) const {
     assert(false);
 }
 
+bool Card::is_trump(Suit trump) const {
+    assert(false);
+}
+
 // NOTE: We HIGHLY recommend you check out the operator overloading
 // tutorial in the project spec before implementing
 // the following operator overload functions:
