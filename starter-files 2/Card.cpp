@@ -96,6 +96,12 @@ std::istream & operator>>(std::istream &is, Suit &suit) {
 Card::Card() : rank(TWO), suit(SPADES) {
 }
 
+// constructor with parameter
+// initializes card with a rank and suit
+Card::Card(Rank rank_in, Suit suit_in)
+: rank(rank_in), suit(suit_in) {
+}
+
 Suit Suit_next(Suit suit){
      assert(false);
 }
