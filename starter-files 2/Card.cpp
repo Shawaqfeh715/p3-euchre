@@ -126,6 +126,7 @@ Suit suit_next(Suit suit) {
   return SPADES;
 }
 
+
 Suit suit_next(Suit suit) {
      assert(false);
 }
@@ -138,6 +139,11 @@ std::ostream & operator <<(std::ostream &os,const Card &card){
       os << card.get_rank() << " of " << card.get_suit();
       return os;
 }
+
+bool Card::is_right_bower(Suit trump) const {
+    assert(false);
+}
+
 
 // NOTE: We HIGHLY recommend you check out the operator overloading
 // tutorial in the project spec before implementing
