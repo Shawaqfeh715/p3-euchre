@@ -152,6 +152,13 @@ bool Card::is_trump(Suit trump) const {
     assert(false);
 }
 
+
+// NON MEMBER FUNCTIONS
+bool Card_less(const Card &a, const Card &b, Suit trump) {
+    assert(false);
+}
+
+
 // NOTE: We HIGHLY recommend you check out the operator overloading
 // tutorial in the project spec before implementing
 // the following operator overload functions:
