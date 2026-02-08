@@ -162,6 +162,38 @@ bool Card_less(const Card &a, const Card &b, const Card &led_card, Suit trump) {
     assert(false);
 }
 
+// OVERLOADED FUNCTIONS
+
+std::istream & operator>>(std::istream &is, Card &card) {
+    assert(false);
+}
+
+bool operator<(const Card &lhs, const Card &rhs) {
+    assert(false);
+}
+
+
+bool operator<=(const Card &lhs, const Card &rhs) {
+    assert(false);
+}
+
+bool operator>(const Card &lhs, const Card &rhs) {
+    assert(false);
+}
+
+bool operator>=(const Card &lhs, const Card &rhs) {
+    assert(false);
+}
+
+bool operator==(const Card &lhs, const Card &rhs) {
+    assert(false);
+}
+
+
+bool operator!=(const Card &lhs, const Card &rhs) {
+    assert(false);
+}
+
 
 // NOTE: We HIGHLY recommend you check out the operator overloading
 // tutorial in the project spec before implementing
