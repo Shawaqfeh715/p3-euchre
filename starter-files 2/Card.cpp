@@ -116,7 +116,17 @@ bool Card::is_face_or_ace() const {
   return rank >= JACK;
 }
 
-Suit Suit_next(Suit suit){
+// helper function
+// returns suit of same color
+Suit suit_next(Suit suit) {
+  if (suit == SPADES)   return CLUBS;
+  if (suit == CLUBS)    return SPADES;
+  if (suit == HEARTS)   return DIAMONDS;
+  if (suit == DIAMONDS) return HEARTS;
+  return SPADES;
+}
+
+Suit suit_next(Suit suit) {
      assert(false);
 }
 
