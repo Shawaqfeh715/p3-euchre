@@ -107,6 +107,10 @@ Rank Card::get_rank() const {
   return rank;
 }
 
+Suit Card::get_suit() const {
+  return suit;
+}
+
 Suit Suit_next(Suit suit){
      assert(false);
 }
