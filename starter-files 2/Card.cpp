@@ -179,7 +179,7 @@ bool operator<=(const Card &lhs, const Card &rhs) {
 }
 
 bool operator>(const Card &lhs, const Card &rhs) {
-    assert(false);
+    return !(lhs <= rhs);
 }
 
 bool operator>=(const Card &lhs, const Card &rhs) {
