@@ -145,14 +145,15 @@ bool Card::is_right_bower(Suit trump) const {
   return (rank == JACK && suit == trump);
 }
 
+// Jack of the same colored suit
 bool Card::is_left_bower(Suit trump) const {
-    assert(false);
+    return (rank == JACK && suit == suit_next(trump));
 }
 
 bool Card::is_trump(Suit trump) const {
-    assert(false);
+  assert(false);
+  return false;
 }
-
 
 // NON MEMBER FUNCTIONS
 bool Card_less(const Card &a, const Card &b, Suit trump) {
