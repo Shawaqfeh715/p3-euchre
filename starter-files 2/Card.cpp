@@ -151,7 +151,7 @@ bool Card::is_left_bower(Suit trump) const {
 }
 
 bool Card::is_trump(Suit trump) const {
-  return (suit == trump || is_left_bower(trump))
+  return (suit == trump || is_left_bower(trump));
 }
 
 // NON MEMBER FUNCTIONS
@@ -192,7 +192,7 @@ bool operator==(const Card &lhs, const Card &rhs) {
 
 
 bool operator!=(const Card &lhs, const Card &rhs) {
-    assert(false);
+    return !(lhs == rhs);
 }
 
 
