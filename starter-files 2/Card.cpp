@@ -214,3 +214,11 @@ bool operator!=(const Card &lhs, const Card &rhs) {
 //   operator>=
 //   operator==
 //   operator!=
+
+bool Card_less(const Card &a, const Card &b, Suit trump) {
+  assert(false);
+}
+
+bool Card_less(const Card &a, const Card &b, const Card &led_card, Suit trump) {
+  assert(false);
+}
