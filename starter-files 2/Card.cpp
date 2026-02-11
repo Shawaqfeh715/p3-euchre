@@ -141,7 +141,7 @@ std::ostream & operator <<(std::ostream &os,const Card &card){
 }
 
 bool Card::is_right_bower(Suit trump) const {
-    assert(false);
+  return (rank == JACK && suit == trump);
 }
 
 bool Card::is_left_bower(Suit trump) const {
