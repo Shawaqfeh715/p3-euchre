@@ -140,6 +140,7 @@ std::ostream & operator <<(std::ostream &os,const Card &card){
       return os;
 }
 
+// Jack of the trump suit
 bool Card::is_right_bower(Suit trump) const {
   return (rank == JACK && suit == trump);
 }
