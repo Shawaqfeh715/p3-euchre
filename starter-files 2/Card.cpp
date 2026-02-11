@@ -166,7 +166,10 @@ bool Card_less(const Card &a, const Card &b, const Card &led_card, Suit trump) {
 // OVERLOADED FUNCTIONS
 
 std::istream & operator>>(std::istream &is, Card &card) {
-    assert(false);
+    string trash;
+  // Expects format "Rank of Suit"
+  is >> card.rank >> trash >> card.suit;
+  return is;
 }
 
 bool operator<(const Card &lhs, const Card &rhs) {
