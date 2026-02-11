@@ -170,7 +170,10 @@ std::istream & operator>>(std::istream &is, Card &card) {
 }
 
 bool operator<(const Card &lhs, const Card &rhs) {
-    assert(false);
+    if (lhs.get_rank() != rhs.get_rank()) {
+    return lhs.get_rank() < rhs.get_rank();
+  }
+  return lhs.get_suit() < rhs.get_suit();
 }
 
 
