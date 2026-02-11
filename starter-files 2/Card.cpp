@@ -187,7 +187,8 @@ bool operator>=(const Card &lhs, const Card &rhs) {
 }
 
 bool operator==(const Card &lhs, const Card &rhs) {
-    assert(false);
+    return (lhs.get_rank() == rhs.get_rank() && lhs.get_suit() == rhs.get_suit());
+
 }
 
 
