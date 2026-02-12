@@ -127,13 +127,7 @@ Suit suit_next(Suit suit) {
 }
 
 
-Suit suit_next(Suit suit) {
-     if(suit!=JACK){
-       return suit_next(suit);
-     }else if (suit==JACK && )
-     {
-      /* code */
-     }
+Suit suit_next(Suit suit) { 
      
 }
 
