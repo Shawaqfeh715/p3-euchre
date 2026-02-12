@@ -239,5 +239,22 @@ bool Card_less(const Card &a, const Card &b, Suit trump) {
 }
 
 bool Card_less(const Card &a, const Card &b, const Card &led_card, Suit trump) {
-  assert(false);
+  if (a.is_trump(trump) || b.is_trump(trump)) {
+        return Card_less(a, b, trump);
+    }
+
+    // 2. If neither is trump, check for the led suit
+    Suit led_suit = led_card.get_suit(trump);
+    // using get_suit because the led card could be Left Bower
+
+    if (b.get_suit(trump) == led_suit && a.get_suit(trump) != led_suit) {
+        return true; // b follows suit, a doesn't. a is less.
+    }
+
+    if (a.get_suit(trump) == led_suit && b.get_suit(trump) != led_suit) {
+        return false; // a follows suit, b doesn't. a is not less.
+    }
+
+    // 3. Otherwise, compare normally
+    return a < b;
 }
