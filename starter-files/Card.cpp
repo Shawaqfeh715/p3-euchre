@@ -83,7 +83,6 @@ std::istream & operator>>(std::istream &is, Suit &suit) {
 // default constructor
 Card::Card() : rank(TWO), suit(SPADES) {
 }
->>>>>>> bad12e4 (corrected card.cpp)
 
 // Default constructor
 Card::Card() : rank(TWO), suit(SPADES) {}
