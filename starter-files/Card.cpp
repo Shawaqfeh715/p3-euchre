@@ -113,34 +113,6 @@ bool Card::is_face_or_ace() const {
   return rank >= JACK;
 }
 
-<<<<<<< HEAD
-// helper function
-// returns suit of same color
-Suit suit_next(Suit suit) {
-  if (suit == SPADES)   return CLUBS;
-  if (suit == CLUBS)    return SPADES;
-  if (suit == HEARTS)   return DIAMONDS;
-  if (suit == DIAMONDS) return HEARTS;
-  return SPADES;
-}
-
-
-Suit suit_next(Suit suit) { 
-     
-}
-
-bool Card_less(const Card &a,const Card &b, Suit trump){
-     assert(false);
-}
-
-std::ostream & operator <<(std::ostream &os,const Card &card){
-      os << card.get_rank() << " of " << card.get_suit();
-      return os;
-}
-
-// Jack of the trump suit
-=======
->>>>>>> bad12e4 (corrected card.cpp)
 bool Card::is_right_bower(Suit trump) const {
   return (rank == JACK && suit == trump);
 }
