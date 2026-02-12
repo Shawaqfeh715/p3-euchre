@@ -227,6 +227,9 @@ bool Card_less(const Card &a, const Card &b, Suit trump) {
     // 3. If one is trump and the other isn't
     if (b.is_trump(trump) && !a.is_trump(trump)) return true;
     if (a.is_trump(trump) && !b.is_trump(trump)) return false;
+
+    // 4. If both are trump or both are non-trump, compare normally
+    return a < b;
 }
 
 bool Card_less(const Card &a, const Card &b, const Card &led_card, Suit trump) {
