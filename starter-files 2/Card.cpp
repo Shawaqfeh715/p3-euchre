@@ -94,7 +94,6 @@ std::istream & operator>>(std::istream &is, Suit &suit) {
 /////////////// Write your implementation for Card below ///////////////
 // default constructor
 Card::Card() : rank(TWO), suit(SPADES) {
-   
 }
 
 // constructor with parameter
@@ -129,7 +128,13 @@ Suit suit_next(Suit suit) {
 
 
 Suit suit_next(Suit suit) {
-     assert(false);
+     if(suit!=JACK){
+       return suit_next(suit);
+     }else if (suit==JACK && )
+     {
+      /* code */
+     }
+     
 }
 
 bool Card_less(const Card &a,const Card &b, Suit trump){
