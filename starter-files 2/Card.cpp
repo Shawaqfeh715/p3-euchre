@@ -216,7 +216,9 @@ bool operator!=(const Card &lhs, const Card &rhs) {
 //   operator!=
 
 bool Card_less(const Card &a, const Card &b, Suit trump) {
-  assert(false);
+  // 1. If b is Right Bower, it is the highest possible card
+    if (b.is_right_bower(trump)) return true;
+    if (a.is_right_bower(trump)) return false;
 }
 
 bool Card_less(const Card &a, const Card &b, const Card &led_card, Suit trump) {
