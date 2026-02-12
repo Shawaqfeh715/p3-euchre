@@ -80,11 +80,9 @@ std::istream & operator>>(std::istream &is, Suit &suit) {
 }
 
 /////////////// Write your implementation for Card below ///////////////
-<<<<<<< HEAD
 // default constructor
 Card::Card() : rank(TWO), suit(SPADES) {
 }
-=======
 >>>>>>> bad12e4 (corrected card.cpp)
 
 // Default constructor
