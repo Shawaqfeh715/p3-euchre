@@ -220,6 +220,17 @@ bool Card_less(const Card &a, const Card &b, Suit trump) {
   // 1. If b is Right Bower, it is the highest possible card
     if (b.is_right_bower(trump)) return true;
     if (a.is_right_bower(trump)) return false;
+
+    // 2. If b is Left Bower, it's higher than anything except Right Bower
+    if (b.is_left_bower(trump)) return true;
+    if (a.is_left_bower(trump)) return false;
+
+    // 3. If one is trump and the other isn't
+    if (b.is_trump(trump) && !a.is_trump(trump)) return true;
+    if (a.is_trump(trump) && !b.is_trump(trump)) return false;
+
+    // 4. If both are trump or both are non-trump, compare normally
+    return a < b;
 }
 
 bool Card_less(const Card &a, const Card &b, const Card &led_card, Suit trump) {
