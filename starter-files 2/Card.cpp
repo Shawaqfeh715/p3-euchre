@@ -224,6 +224,9 @@ bool Card_less(const Card &a, const Card &b, Suit trump) {
     if (b.is_left_bower(trump)) return true;
     if (a.is_left_bower(trump)) return false;
 
+    // 3. If one is trump and the other isn't
+    if (b.is_trump(trump) && !a.is_trump(trump)) return true;
+    if (a.is_trump(trump) && !b.is_trump(trump)) return false;
 }
 
 bool Card_less(const Card &a, const Card &b, const Card &led_card, Suit trump) {
