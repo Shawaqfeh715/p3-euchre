@@ -234,5 +234,6 @@ bool Card_less(const Card &a, const Card &b, Suit trump) {
 }
 
 bool Card_less(const Card &a, const Card &b, const Card &led_card, Suit trump) {
-  assert(false);
-}
+  if (a.is_trump(trump) || b.is_trump(trump)) {
+        return Card_less(a, b, trump);
+    }
