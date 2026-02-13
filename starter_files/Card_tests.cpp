@@ -42,5 +42,46 @@ TEST(test_card_less_trump) {
     ASSERT_TRUE(Card_less(ace_spades, nine_hearts, trump));
 
 }
+
+TEST(test_card_less_led_suit) {
+    Card nine_diamonds(NINE, DIAMONDS);
+    Card ace_spades(ACE, SPADES);
+    Suit trump = HEARTS;
+    Suit led = DIAMONDS;
+
+    // Even though Ace is higher rank, 9 of Diamonds wins because it's the led suit
+    ASSERT_TRUE(Card_less(ace_spades, nine_diamonds, led, trump));
+}
+
+TEST(test_left_bower_vs_natural_suit) {
+    Card jack_diamonds(JACK, DIAMONDS); // Left Bower
+    Card ace_diamonds(ACE, DIAMONDS);   // High natural suit
+    Suit trump = HEARTS;
+
+    // Left Bower should be stronger than the ace of its own natural suit
+    ASSERT_TRUE(Card_less(ace_diamonds, jack_diamonds, trump));
+}
+
+TEST(test_operators) {
+    Card c1(KING, SPADES);
+    Card c2(KING, SPADES);
+    Card c3(ACE, SPADES);
+
+    ASSERT_TRUE(c1 == c2);
+    ASSERT_TRUE(c1 < c3);
+    ASSERT_FALSE(c1 > c3);
+}
+
+
+TEST(test_left_bower_black_suits) {
+    Card jack_clubs(JACK, CLUBS);
+    Suit trump = SPADES;
+
+    // Verify logic works for black suits as well
+    ASSERT_TRUE(jack_clubs.is_left_bower(trump));
+    ASSERT_EQUAL(jack_clubs.get_suit(trump), SPADES);
+}
+
+
 // Add more test cases here
 TEST_MAIN()
