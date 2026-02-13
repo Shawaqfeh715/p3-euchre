@@ -46,11 +46,12 @@ TEST(test_card_less_trump) {
 TEST(test_card_less_led_suit) {
     Card nine_diamonds(NINE, DIAMONDS);
     Card ace_spades(ACE, SPADES);
+    Card led_card(FIVE, DIAMONDS); // This card defines the led suit
     Suit trump = HEARTS;
-    Suit led = DIAMONDS;
 
-    // Even though Ace is higher rank, 9 of Diamonds wins because it's the led suit
-    ASSERT_TRUE(Card_less(ace_spades, nine_diamonds, led, trump));
+    // Pass the led_card, not the suit
+    ASSERT_TRUE(Card_less(ace_spades, nine_diamonds, led_card, trump));
+
 }
 
 TEST(test_left_bower_vs_natural_suit) {
