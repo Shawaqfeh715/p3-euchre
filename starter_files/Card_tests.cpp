@@ -124,5 +124,15 @@ TEST(test_card_less_natural_rank) {
     ASSERT_TRUE(Card_less(seven_clubs, queen_spades, led_card, trump));
 }
 
+
+TEST(test_is_left_bower_black) {
+    Card jack_spades(JACK, SPADES);
+    Card jack_clubs(JACK, CLUBS);
+    
+    // If Clubs are Trump, Jack of Spades is the Left Bower
+    ASSERT_TRUE(jack_spades.is_left_bower(CLUBS));
+    ASSERT_FALSE(jack_clubs.is_left_bower(CLUBS)); // This is the Right Bower
+}
+
 // Add more test cases here
 TEST_MAIN()
