@@ -93,5 +93,13 @@ TEST(test_card_less_no_trump_no_led) {
     ASSERT_TRUE(Card_less(nine_spades, ace_clubs, led, trump));
 }
 
+TEST(test_card_less_self_comparison) {
+    Card ace_hearts(ACE, HEARTS);
+    Suit trump = HEARTS;
+    
+    // A card should not be less than itself
+    ASSERT_FALSE(Card_less(ace_hearts, ace_hearts, trump));
+}
+
 // Add more test cases here
 TEST_MAIN()
