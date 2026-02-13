@@ -114,5 +114,15 @@ TEST(test_left_bower_led_suit_behavior) {
     ASSERT_TRUE(Card_less(ace_diamonds, jack_diamonds, led_card, trump));
 }
 
+TEST(test_card_less_natural_rank) {
+    Card queen_spades(QUEEN, SPADES);
+    Card seven_clubs(SEVEN, CLUBS);
+    Card led_card(NINE, DIAMONDS); 
+    Suit trump = HEARTS;
+
+    // Neither is trump or led suit. Queen should beat Seven.
+    ASSERT_TRUE(Card_less(seven_clubs, queen_spades, led_card, trump));
+}
+
 // Add more test cases here
 TEST_MAIN()
