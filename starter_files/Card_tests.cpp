@@ -16,12 +16,31 @@ TEST(identity_of_left_bower) {
     Suit trump = HEARTS;
 
     // edge case: suit should be reported as hearts even though it's a DIAMOND
-    ASSERT_TRUE(jack_diamonds.is_left_bower(trump));
-    ASSERT_TRUE(jack_diamonds.is_trump(trump));
-    ASSERT_EQUAL(jack_diamonds.get_suit(trump), HEARTS);
+    ASSERT_TRUE(jack_of_diamonds.is_left_bower(trump));
+    ASSERT_TRUE(jack_of_diamonds.is_trump(trump));
+    ASSERT_EQUAL(jack_of_diamonds.get_suit(trump), HEARTS);
 
     // if it's not a trump, it's a normal diamond
     ASSERT_TRUE(jack_of_diamonds.get_suit() == DIAMONDS);
+}
+
+TEST(test_card_less_trump) {
+    Card ace_spades(ACE, SPADES);
+    Card nine_hearts(NINE, HEARTS); // Trump
+    Card jack_hearts(JACK, HEARTS); // Right Bower
+    Card jack_diamonds(JACK, DIAMONDS); // Left Bower
+    Suit trump = HEARTS;
+
+    // Right Bower > Left Bower (So a < b is true)
+    ASSERT_TRUE(Card_less(jack_diamonds, jack_hearts, trump));
+
+    // Left Bower > Ace of Trump
+    Card ace_hearts(ACE, HEARTS);
+    ASSERT_TRUE(Card_less(ace_hearts, jack_diamonds, trump));
+
+    // 9 of Trump > Ace of Non-Trump
+    ASSERT_TRUE(Card_less(ace_spades, nine_hearts, trump));
+
 }
 // Add more test cases here
 TEST_MAIN()
