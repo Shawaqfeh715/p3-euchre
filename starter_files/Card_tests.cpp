@@ -82,6 +82,16 @@ TEST(test_left_bower_black_suits) {
     ASSERT_EQUAL(jack_clubs.get_suit(trump), SPADES);
 }
 
+TEST(test_card_less_no_trump_no_led) {
+    Card ace_clubs(ACE, CLUBS);
+    Card nine_spades(NINE, SPADES);
+    Suit trump = HEARTS;
+    Suit led = DIAMONDS;
+
+    // Neither is trump, neither is led suit. normal rank comparison applies.
+    // Ace of Clubs should be greater than Nine of Spades.
+    ASSERT_TRUE(Card_less(nine_spades, ace_clubs, led, trump));
+}
 
 // Add more test cases here
 TEST_MAIN()
