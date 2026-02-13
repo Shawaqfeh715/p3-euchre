@@ -102,5 +102,17 @@ TEST(test_card_less_self_comparison) {
     ASSERT_FALSE(Card_less(ace_hearts, ace_hearts, trump));
 }
 
+TEST(test_left_bower_led_suit_behavior) {
+    Card jack_diamonds(JACK, DIAMONDS); // Left Bower
+    Card ace_diamonds(ACE, DIAMONDS);   // High Diamond
+    Card led_card(NINE, DIAMONDS);      // Diamonds were led
+    Suit trump = HEARTS;
+
+    // The Jack of Diamonds is a TRUMP, not a DIAMOND.
+    // In a comparison where Diamonds are led, the Jack of Diamonds 
+    // should still beat the Ace of Diamonds because Trump > Led Suit.
+    ASSERT_TRUE(Card_less(ace_diamonds, jack_diamonds, led_card, trump));
+}
+
 // Add more test cases here
 TEST_MAIN()
