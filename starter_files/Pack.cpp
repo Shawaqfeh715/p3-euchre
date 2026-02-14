@@ -53,3 +53,8 @@ Card Pack::deal_one() {
     return dealt;
 
 }
+
+void Pack::reset() {
+    next = 0;
+    
+}
