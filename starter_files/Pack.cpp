@@ -14,3 +14,11 @@ static Rank string_to_rank(std::string str) {
     assert(false); // Should never happen if input is valid
 }
 
+
+static Suit string_to_suit(std::string str) {
+    if (str == "Spades") return SPADES;
+    if (str == "Hearts") return HEARTS;
+    if (str == "Clubs") return CLUBS;
+    if (str == "Diamonds") return DIAMONDS;
+    assert(false); // Should never happen if input is valid
+}
