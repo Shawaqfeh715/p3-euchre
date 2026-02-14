@@ -45,3 +45,11 @@ Pack::Pack(std::istream& pack_input) {
     }
 
 }
+
+Card Pack::deal_one() {
+    assert(!empty());
+    Card dealt = cards[next];
+    next ++;
+    return dealt;
+
+}
