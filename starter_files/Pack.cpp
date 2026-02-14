@@ -22,3 +22,14 @@ static Suit string_to_suit(std::string str) {
     if (str == "Diamonds") return DIAMONDS;
     assert(false); // Should never happen if input is valid
 }
+
+Pack::Pack() {
+    next = 0;
+    int i = 0;
+    for (int s = SPADES; s <= DIAMONDS; ++s) {
+        for (int r = NINE; r <= ACE; ++r) {
+            cards[i] = Card(static_cast<Rank>(r), static_cast<Suit>(s));
+            ++i;
+        }
+    }
+}
