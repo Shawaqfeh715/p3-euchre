@@ -33,3 +33,15 @@ Pack::Pack() {
         }
     }
 }
+
+// Stream input constructor
+Pack::Pack(std::istream& pack_input) {
+    next = 0;
+    std::string rank_str, junk, suit_str;
+    for (int i = 0; i < PACK_SIZE; ++i) {
+        if(pack_input >> rank_str >> junk >> suit_str) {
+            cards[i] = Card(string_to_rank(rank_str), string_to_suit(suit_str));
+        }
+    }
+
+}
