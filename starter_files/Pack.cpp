@@ -53,12 +53,12 @@ Card Pack::deal_one() {
 
 }
 
-bool Pack::empty() const { 
-    return next>=PACK_SIZE;
+bool Pack::empty() const {
+    return next >= PACK_SIZE;
 }
 
-void Pack::reset(){
-    next=0;
+void Pack::reset() {
+    next = 0;
 }
 
 void Pack::shuffle() {
