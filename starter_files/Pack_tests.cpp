@@ -12,6 +12,19 @@ TEST(test_pack_default_ctor) {
     ASSERT_EQUAL(SPADES, first.get_suit());
 }
 
-// Add more tests here
+TEST(test_pack_shuffle) {
+    Pack pack;
+    Card first_before = pack.deal_one(); // 9 of Spades
+    pack.reset();
+
+    pack.shuffle();
+    Card first_after = pack.deal_one();
+
+    // In a 24-card In-Shuffle, the card at index 12 moves to index 0.
+    // Index 12 in a new deck is the 9 of Hearts.
+    ASSERT_NOT_EQUAL(first_before, first_after);
+    ASSERT_EQUAL(first_after, Card(NINE, HEARTS));
+
+}
 
 TEST_MAIN()
