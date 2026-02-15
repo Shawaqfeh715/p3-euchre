@@ -61,21 +61,21 @@ void Pack::reset(){
     next=0;
 }
 
-void Pack::shuffle(){
-     std::array<Card,PACK_SIZE> temp;
-
-     for (int count = 0; count < 7; ++count)
-     {
-       for (int i = 0; i < PACK_SIZE; ++i)
-       {
-         if (i%2==0)
-         {
-         temp[i]= cards[PACK_SIZE/2+I/2];
-         }else{
-        temp[i]=cards[i/2];
+void Pack::shuffle() {
+    for (int count = 0; count < 7; ++count) {
+        std::array<Card, PACK_SIZE> temp;
+        for (int i = 0; i < PACK_SIZE; ++i) {
+            if (i % 2 == 0) {
+                // Even indices get the bottom half (starting at index 12)
+                temp[i] = cards[PACK_SIZE / 2 + i / 2];
+            } else {
+                // Odd indices get the top half (starting at index 0)
+                temp[i] = cards[i / 2];
+            }
         }
-        cards=temp;
-     }
-     reset();
+        // Move this OUTSIDE the i-loop so the shuffle finishes before updating
+        cards = temp; 
+    }
+    reset(); // Sets next = 0
 }
 
