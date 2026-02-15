@@ -56,5 +56,4 @@ Card Pack::deal_one() {
 
 void Pack::reset() {
     next = 0;
-    
 }
