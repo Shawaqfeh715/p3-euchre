@@ -43,7 +43,6 @@ Pack::Pack(std::istream& pack_input) {
             cards[i] = Card(string_to_rank(rank_str), string_to_suit(suit_str));
         }
     }
-
 }
 
 Card Pack::deal_one() {
@@ -54,6 +53,29 @@ Card Pack::deal_one() {
 
 }
 
-void Pack::reset() {
-    next = 0;
+bool Pack::empty() const { 
+    return next>=PACK_SIZE;
 }
+
+void Pack::reset(){
+    next=0;
+}
+
+void Pack::shuffle(){
+     std::array<Card,PACK_SIZE> temp;
+
+     for (int count = 0; count < 7; ++count)
+     {
+       for (int i = 0; i < PACK_SIZE; ++i)
+       {
+         if (i%2==0)
+         {
+         temp[i]= cards[PACK_SIZE/2+I/2];
+         }else{
+        temp[i]=cards[i/2];
+        }
+        cards=temp;
+     }
+     reset();
+}
+
