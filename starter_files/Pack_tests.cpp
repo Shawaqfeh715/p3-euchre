@@ -23,5 +23,13 @@ TEST(test_pack_shuffle) {
     ASSERT_EQUAL(first_card, Card(KING, CLUBS));
 }
 
+TEST(test_pack_is_empty) {
+    Pack pack;
+    for (int i = 0; i < 24; ++i) {
+        ASSERT_FALSE(pack.empty());
+        pack.deal_one();
+    }
+    ASSERT_TRUE(pack.empty());
+}
 
 TEST_MAIN()
