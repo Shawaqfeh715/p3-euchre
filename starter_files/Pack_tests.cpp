@@ -14,17 +14,13 @@ TEST(test_pack_default_ctor) {
 
 TEST(test_pack_shuffle) {
     Pack pack;
-    Card first_before = pack.deal_one(); // 9 of Spades
-    pack.reset();
-
-    pack.shuffle();
-    Card first_after = pack.deal_one();
-
-    // In a 24-card In-Shuffle, the card at index 12 moves to index 0.
-    // Index 12 in a new deck is the 9 of Hearts.
-    ASSERT_NOT_EQUAL(first_before, first_after);
-    ASSERT_EQUAL(first_after, Card(NINE, HEARTS));
-
+    pack.shuffle(); // This runs the internal 7-shuffle loop
+    
+    Card first_card = pack.deal_one();
+    
+    // After exactly 7 In-Shuffles of a standard 24-card deck, 
+    // the card at the top should be the King of Clubs.
+    ASSERT_EQUAL(first_card, Card(KING, CLUBS));
 }
 
 
