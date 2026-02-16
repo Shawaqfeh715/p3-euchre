@@ -45,7 +45,6 @@ TEST(test_pack_reset) {
 
 
 TEST(test_pack_stream_reader) {
-    // A tiny pack of cards in a string
     std::string data = "Nine of Spades\nTen of Spades\nJack of Spades\n"
                        "Queen of Spades\nKing of Spades\nAce of Spades\n"
                        
