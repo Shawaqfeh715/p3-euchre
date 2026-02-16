@@ -32,4 +32,15 @@ TEST(test_pack_is_empty) {
     ASSERT_TRUE(pack.empty());
 }
 
+
+TEST(test_pack_reset) {
+    Pack pack;
+    Card first_card = pack.deal_one();
+    
+    pack.reset();
+    Card reset_card = pack.deal_one();
+    
+    ASSERT_EQUAL(first_card, reset_card);
+}
+
 TEST_MAIN()
