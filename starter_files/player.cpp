@@ -185,5 +185,35 @@ class HumanPlayer : public Player {
     sort(hand.begin(), hand.end());
   }
 
-}
+  Card lead_card(Suit trump) override {
+    sort(hand.begin(), hand.end()); 
+    print_hand();
+    cout << "Human player " << name << ", please select a card:\n";
+  }
+
+  int choice;
+    cin >> choice;
+    Card played = hand[choice];
+    hand.erase(hand.begin() + choice);
+    return played;
+  }
+
+  Card play_card(const Card &led_card, Suit trump) override {
+    // For a Human, leading and playing look the same: pick a card
+    return lead_card(trump); 
+  }
+
+private:
+  string name;
+  vector<Card> hand;
+
+  // Helper function required by specs
+  void print_hand() const {
+    for (size_t i = 0; i < hand.size(); ++i) {
+      cout << "Human player " << name << "'s hand: [" 
+           << i << "] " << hand[i] << "\n";
+    }
+  }
 };
+
+
