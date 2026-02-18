@@ -60,4 +60,26 @@ TEST(test_play_card_cannot_follow_suit_plays_lowest){
 
     ASSERT_EQUAL(played,Card(TWO,CLUBS));
 }
+
+TEST(test_play_card_left_bower_cannot_follow_hearts){
+    Player *p=Player_factory("Dave","Simple");
+    p->add_card(Card(JACK,CLUBS));
+    p->add_card(Card(TWO,DIAMONDS));
+    p->add_card(Card(THREE,CLUBS));
+
+    delete p;
+
+    p=Player_factory("Dave","Simple");
+    p->add_card(Card(JACK,DIAMONDS));
+    p->add_card(Card(TWO,SPADES));
+    p->add_card(Card(THREE,CLUBS));
+    p->add_card(Card(FOUR,SPADES));
+    p->add_card(Card(FIVE,CLUBS));
+
+    Card led_card(TEN,SPADES);
+    Card played=p->play_card(led_card,HEARTS);
+
+    ASSERT_EQUAL(played,Card(FOUR,SPADES));
+    delete p;
+}
 TEST_MAIN()
