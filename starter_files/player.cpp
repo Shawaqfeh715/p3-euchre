@@ -1,8 +1,7 @@
-#include "player.h"
+#include "Player.hpp"
+#include <algorithm>
+#include <cassert>
+#include <iostream>
 
-class SimplePlayer : public Player {
-    private:
-    std::string name;
-    std::vector<Card> hand;
+using namespace std;
 
-};
