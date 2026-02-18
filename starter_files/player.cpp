@@ -55,4 +55,18 @@ void add_card(const Card &c) override {
     }
     return false;
   }
+  
+  void add_and_remove(const Card &upcard) override {
+    assert(hand.size() >= 1);
+    hand.push_back(upcard);
+
+    // discard the lowest card even if it's upcard 
+    auto lowest_it = hand.begin();
+    for (auto it = hand.begin(); it != hand.end(); ++it) {
+      if (Card_less(*it, *lowest_it, upcard.get_suit())) {
+        lowest_it = it;
+      }
+    }
+    hand.erase(lowest_it);
+  }
 };
