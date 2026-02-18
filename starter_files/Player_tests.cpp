@@ -30,4 +30,34 @@ TEST(test_simple_make_trump_round1_order_up){
     delete p;
 }
 
+TEST(test_simple_make_trump_round1_pass_not_enough_face_trump){
+    Player *p=Player_factory("Alice","Simple");
+
+    p->add_card(Card(ACE,SPADES));
+    p->add_card(Card(NINE,SPADES));
+    p->add_card(Card(TWO,HEARTS));
+    p->add_card(Card(THREE,DIAMONDS));
+    p->add_card(Card(FOUR,CLUBS));
+
+    Card upcard(TEN,SPADES);
+    Suit ordered;
+    bool result=p->make_trump(upcard,false,1,ordered);
+
+    ASSERT_FALSE(result);
+    delete p;
+}
+
+TEST(test_play_card_cannot_follow_suit_plays_lowest){
+    Player *p =Player_factory("Dave","Simple");
+    p->add_card(Card(ACE,SPADES));
+    p->add_card(Card(KING,CLUBS));
+    p->add_card(Card(TWO,CLUBS));
+    p->add_card(Card(THREE,DIAMONDS));
+    p->add_card(Card(FOUR,CLUBS));
+
+    Card led_card(TEN,HEARTS);
+    Card played=p->play_card(led_card,SPADES);
+
+    ASSERT_EQUAL(played,Card(TWO,CLUBS));
+}
 TEST_MAIN()
