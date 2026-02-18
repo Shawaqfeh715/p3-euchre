@@ -215,3 +215,20 @@ private:
     }
   }
 };
+Player *Player_factory(const string &name, const string &strategy){
+  if (strategy=="Simple")
+  {
+    return new SimplePlayer(name);
+  }else if(strategy=="Human")
+  {
+    return new HumanPlayer(name);
+  }
+  assert(false);
+  return nullptr;
+  
+}
+
+ostream & operator<<(ostream &os,const Player &p){
+  os<<p.get_name();
+  return os;
+}
