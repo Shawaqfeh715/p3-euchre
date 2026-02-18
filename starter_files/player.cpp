@@ -136,7 +136,7 @@ public:
 };
 
 class HumanPlayer : public Player {
-  public:
+public:
   HumanPlayer(const string &name) : name(name) {}
 
   const string & get_name() const override { return name; }
@@ -146,37 +146,37 @@ class HumanPlayer : public Player {
     assert(hand.size() < MAX_HAND_SIZE);
     hand.push_back(c);
     sort(hand.begin(), hand.end());
+  } // <--- Added this brace to close add_card correctly
 
-    bool make_trump (const Card &upcard, bool is_dealer, int round, Suit & order_up_suit) const override {
-      print_hand();
-      cout << "Human Player " << name << ", please enter a suit, or \"pass\":\n";
+  bool make_trump(const Card &upcard, bool is_dealer, int round, Suit &order_up_suit) const override {
+    print_hand();
+    cout << "Human player " << name << ", please enter a suit, or \"pass\":\n";
 
-      string decision;
-      cin >> decision;
+    string decision;
+    cin >> decision;
 
-
-      if (decision != "pass") {
-        order_up_suit = string_to_suit(decision);
-        return true;
-      }
-      return false;
+    if (decision != "pass") {
+      order_up_suit = string_to_suit(decision);
+      return true;
     }
+    return false;
+  }
 
-    void add_and_discard(const Card &upcard) override {
-      // adding upcard to choose from the 6 cards
-      hand.push_back(upcard);
-      sort(hand.begin(), hand.end());
+  void add_and_discard(const Card &upcard) override {
+    // adding upcard to choose from the 6 cards
+    hand.push_back(upcard);
+    sort(hand.begin(), hand.end());
 
-      print_hand();
-      cout << "Discard upcard: [-1]\n";
-      cout << "Human player " << name << ", please select a card to discard:\n";
+    print_hand();
+    cout << "Discard upcard: [-1]\n";
+    cout << "Human player " << name << ", please select a card to discard:\n";
 
-      int choice;
-      cin >> choice;
+    int choice;
+    cin >> choice;
 
-      if (choice == -1) {
-        // discard upcard
-        auto it = find(hand.begin(), hand.end(), upcard);
+    if (choice == -1) {
+      // discard upcard
+      auto it = find(hand.begin(), hand.end(), upcard);
       hand.erase(it);
     } else {
       hand.erase(hand.begin() + choice);
@@ -189,9 +189,9 @@ class HumanPlayer : public Player {
     sort(hand.begin(), hand.end()); 
     print_hand();
     cout << "Human player " << name << ", please select a card:\n";
-  }
-
-  int choice;
+    
+    // Moved these inside the function scope
+    int choice;
     cin >> choice;
     Card played = hand[choice];
     hand.erase(hand.begin() + choice);
@@ -215,5 +215,3 @@ private:
     }
   }
 };
-
-
