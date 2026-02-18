@@ -13,5 +13,21 @@ TEST(test_player_get_name) {
 }
 
 // Add more tests here
+TEST(test_simple_make_trump_round1_order_up){
+    Player *p= Player_factory("Alice","Simple");
+    p->add_card(Card(JACK,SPADES));
+    p->add_card(Card(JACK,CLUBS));
+    p->add_card(Card(ACE,HEARTS));
+    p->add_card(Card(TWO,DIAMONDS));
+    p->add_card(Card(THREE,HEARTS));
+
+    Card upcard(TEN,SPADES);
+    Suit ordered;
+    bool result=p->make_trump(upcard,false,1,ordered);
+
+    ASSERT_TRUE(result);
+    ASSERT_EQUAL(ordered,SPADES);
+    delete p;
+}
 
 TEST_MAIN()
