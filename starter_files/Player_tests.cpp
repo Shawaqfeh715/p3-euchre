@@ -82,4 +82,23 @@ TEST(test_play_card_left_bower_cannot_follow_hearts){
     ASSERT_EQUAL(played,Card(FOUR,SPADES));
     delete p;
 }
+
+TEST(test_simple_player_screw_the_dealer) {
+    Player * alice = Player_factory("Alice", "Simple");
+    // Give Alice 5 cards that are NOT Diamonds
+    alice->add_card(Card(NINE, SPADES));
+    alice->add_card(Card(TEN, SPADES));
+    alice->add_card(Card(NINE, CLUBS));
+    alice->add_card(Card(TEN, CLUBS));
+    alice->add_card(Card(NINE, HEARTS));
+
+    Card upcard(NINE, DIAMONDS); // Round 2 candidate will be hearts
+    Suit ordered;
+    // Round 2, Alice is the dealer
+    bool result = alice->make_trump(upcard, true, 2, ordered);
+
+    ASSERT_TRUE(result);
+    ASSERT_EQUAL(ordered, HEARTS);
+    delete alice;
+}
 TEST_MAIN()
