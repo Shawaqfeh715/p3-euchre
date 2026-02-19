@@ -90,5 +90,26 @@ TEST(test_simple_player_play_card_must_follow_with_left_bower) {
     delete p;
 }
 
+TEST(test_simple_player_add_and_discard_from_hand) {
+    Player * p = Player_factory("Dealer", "Simple");
+    // Hand has 4 high cards and one very low card
+    p->add_card(Card(ACE, SPADES));
+    p->add_card(Card(KING, SPADES));
+    p->add_card(Card(QUEEN, SPADES));
+    p->add_card(Card(JACK, SPADES));
+    p->add_card(Card(NINE, DIAMONDS)); // The "junk" card
+
+    // Upcard is a Ten of Spades (Trump!)
+    Card upcard(TEN, SPADES); 
+    p->add_and_discard(upcard);
+    
+    // The player should have discarded the Nine of Diamonds.
+    // If we lead 5 times, the Nine of Diamonds should NEVER appear.
+    for (int i = 0; i < 5; ++i) {
+        Card led = p->lead_card(CLUBS); // Using a neutral suit
+        ASSERT_NOT_EQUAL(led, Card(NINE, DIAMONDS));
+    }
+    delete p;
+}
 
 TEST_MAIN()
