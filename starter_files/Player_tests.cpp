@@ -116,4 +116,19 @@ TEST(test_simple_player_lead_highest_non_trump) {
     delete bob;
 }
 
+
+TEST(test_simple_player_play_highest_follow_suit) {
+    Player * charlie = Player_factory("Charlie", "Simple");
+    charlie->add_card(Card(NINE, SPADES));
+    charlie->add_card(Card(ACE, SPADES)); // highest spade
+    charlie->add_card(Card(KING, HEARTS));
+
+    Card led(TEN, SPADES);
+    // Charlie must follow suit with his highest spade
+    Card played = charlie->play_card(led, HEARTS);
+    ASSERT_EQUAL(played, Card(ACE, SPADES));
+    delete charlie;
+}
+
+
 TEST_MAIN()
