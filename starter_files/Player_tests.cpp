@@ -101,4 +101,19 @@ TEST(test_simple_player_screw_the_dealer) {
     ASSERT_EQUAL(ordered, HEARTS);
     delete alice;
 }
+
+TEST(test_simple_player_lead_highest_non_trump) {
+    Player * bob = Player_factory("Bob", "Simple");
+    bob->add_card(Card(NINE, SPADES));  // trump
+    bob->add_card(Card(TEN, SPADES));  // trump
+    bob->add_card(Card(ACE, HEARTS));  // high non-trump
+    bob->add_card(Card(NINE, CLUBS));  // low non-trump
+    bob->add_card(Card(TEN, CLUBS));
+
+    // Spades are trump so Bob should lead with  ace of hearts.
+    Card led = bob->lead_card(SPADES);
+    ASSERT_EQUAL(led, Card(ACE, HEARTS));
+    delete bob;
+}
+
 TEST_MAIN()
