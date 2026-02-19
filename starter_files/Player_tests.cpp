@@ -72,4 +72,23 @@ TEST(test_simple_player_lead_card_highest_non_trump) {
     delete p;
 }
 
+
+TEST(test_simple_player_play_card_must_follow_with_left_bower) {
+    Player * p = Player_factory("Alice", "Simple");
+    // Hearts are Trump
+    p->add_card(Card(JACK, DIAMONDS)); // Left Bower
+    p->add_card(Card(NINE, SPADES));   // Junk
+    
+    // The Right Bower (Jack of Hearts) is led. 
+    // This is legally a HEART lead.
+    Card led(JACK, HEARTS); 
+    
+    // Alice MUST play the Left Bower because it is legally a Heart.
+    Card played = p->play_card(led, HEARTS);
+    
+    ASSERT_EQUAL(played, Card(JACK, DIAMONDS));
+    delete p;
+}
+
+
 TEST_MAIN()
