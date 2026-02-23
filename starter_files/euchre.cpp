@@ -29,3 +29,21 @@ int main(int argc, char **argv) {
              << "NAME4 TYPE4" << endl;
         return 1;
     }
+
+    // 4. Verify player types and create them
+    vector<Player*> players;
+    for (int i = 4; i < 12; i += 2) {
+        string name = argv[i];
+        string type = argv[i+1];
+        if (type != "Simple" && type != "Human") {
+            cout << "Usage: euchre.exe PACK_FILENAME [shuffle|noshuffle] "
+                 << "POINTS_TO_WIN NAME1 TYPE1 NAME2 TYPE2 NAME3 TYPE3 "
+                 << "NAME4 TYPE4" << endl;
+            // Clean up any players already created before exiting
+            for (Player* p : players) delete p;
+            return 1;
+        }
+        players.push_back(Player_factory(name, type));
+    }
+
+    
