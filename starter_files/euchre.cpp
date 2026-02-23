@@ -46,4 +46,21 @@ int main(int argc, char **argv) {
         players.push_back(Player_factory(name, type));
     }
 
+    // 5. Check if pack file opens
+    ifstream fin(pack_filename);
+    if (!fin.is_open()) {
+        cout << "Error opening " << pack_filename << endl;
+        for (Player* p : players) delete p;
+        return 1;
+    }
+
+    // Print arguments 
+    for (int i = 0; i < argc; ++i) { cout << argv[i] << " "; }
+    cout << endl;
+
+    // TODO: Create game object and play
     
+    // Cleanup
+    for (Player* p : players) delete p;
+    return 0;
+}
