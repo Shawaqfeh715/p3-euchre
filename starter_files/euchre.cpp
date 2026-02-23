@@ -15,3 +15,8 @@ int main(int argc, char **argv) {
              << "NAME4 TYPE4" << endl;
         return 1;
     }
+
+    // 2. getting basic arguments
+    string pack_filename = argv[1];
+    string shuffle_arg = argv[2];
+    int points_to_win = stoi(argv[3]);
