@@ -93,4 +93,15 @@ class Game {
         }
     }
 
-}
+    private:
+    vector<Player*> players;
+    Pack pack;
+    int points_to_win;
+    bool shuffle;
+    int team1_score;
+    int team2_score;
+    int dealer_idx;
+
+    void play_hand();
+    void deal(Card &upcard);
+};
