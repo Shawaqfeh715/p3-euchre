@@ -104,4 +104,20 @@ class Game {
 
     void play_hand();
     void deal(Card &upcard);
+    if (shuffle) {
+        pack.shuffle();
+
+    } else {
+        pack.reset();
+    }
+
+    int batches_to_deal[] = {3, 2, 3, 2, 2, 3, 2, 3};
+    int current_player = (dealer_idx + 1) % 4;
+
+    for(int i = 0; i < 8; ++i) {
+        for (int j = 0; j < batches_to_deal[i]; ++j) {
+            players[current_player]->add_card(pack.deal_one());
+        }
+        current_player = (current_player + 1) % 4;
+    }
 };
