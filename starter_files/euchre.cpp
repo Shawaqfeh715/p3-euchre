@@ -64,3 +64,12 @@ int main(int argc, char **argv) {
     for (Player* p : players) delete p;
     return 0;
 }
+
+class Game {
+    public:
+    Game(vector<Player*> players_in, Pack pack_in, int points_to_win_in,
+         bool shuffle_in) : players(players_in), pack(pack_in),
+         points_to_win(points_to_win_in), shuffle(shuffle_in),
+         team1_score(0), team2_score(0), dealer_idx(0) {}
+         
+}
