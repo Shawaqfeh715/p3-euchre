@@ -71,5 +71,26 @@ class Game {
          bool shuffle_in) : players(players_in), pack(pack_in),
          points_to_win(points_to_win_in), shuffle(shuffle_in),
          team1_score(0), team2_score(0), dealer_idx(0) {}
-         
+
+    void play() {
+        int num_hand = 0;
+        while (team1_score < points_to_win && team2_score < points_to_win) {
+            cout << players[0]->get_name() << " and " << players[2]->get_name()
+                 << " have " << team1_score << " points" << endl;
+            cout << players[1]->get_name() << " and " << players[3]->get_name()
+                 << " have " << team2_score << " points" << endl << endl;
+
+            // preparing for the next hand
+            dealer_idx = (dealer_idx + 1) % 4;
+            num_hand++;
+        }
+
+        // announcing winner of the hand
+        if (team1_score >= points_to_win) {
+            cout << players[0]->get_name() << " and " << players[2]->get_name() << " win!" << endl;
+        } else {
+            cout << players[1]->get_name() << " and " << players[3]->get_name() << " win!" << endl;
+        }
+    }
+
 }
