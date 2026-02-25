@@ -103,6 +103,7 @@ class Game {
     int dealer_idx;
 
     void play_hand();
+
     void deal(Card &upcard);
     if (shuffle) {
         pack.shuffle();
@@ -123,4 +124,41 @@ class Game {
     upcard = pack.deal_one();
     cout << players[dealer_idx]->get_name() << " deals" << endl;
     cout << upcard << " turned up" << endl;
+
+    void Game::play_hand() {
+    Card upcard;
+    deal(upcard);
+
+    Suit trump;
+    int orderer_idx = -1; // Track who made trump (-1 means nobody yet)
+
+    // Round 1
+    for (int i = 1; i <= 4; ++i) {
+        int current = (dealer_idx + i) % 4;
+        if (players[current]->make_trump(upcard, (current == dealer_idx), 1, trump)) {
+            orderer_idx = current;
+            cout << players[current]->get_name() << " orders up " << trump << endl << endl;
+            players[dealer_idx]->add_and_discard(upcard);
+            break;
+        } else {
+            cout << players[current]->get_name() << " passes" << endl;
+        }
+    }
+
+    // Round 2 (Only happens if everyone passed round 1)
+    if (orderer_idx == -1) {
+        for (int i = 1; i <= 4; ++i) {
+            int current = (dealer_idx + i) % 4;
+            if (players[current]->make_trump(upcard, (current == dealer_idx), 2, trump)) {
+                orderer_idx = current;
+                cout << players[current]->get_name() << " orders up " << trump << endl << endl;
+                break;
+            } else {
+                cout << players[current]->get_name() << " passes" << endl;
+            }
+        }
+    }
+
+    // play_tricks(trump, orderer_idx); 
+}
 };
