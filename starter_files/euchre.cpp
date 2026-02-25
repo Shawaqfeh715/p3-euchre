@@ -159,6 +159,21 @@ class Game {
         }
     }
 
+    void play_tricks(Suit trump, int orderer_idx) {
+    int team1_tricks = 0;
+    int team2_tricks = 0;
+    int leader_idx = (dealer_idx + 1) % 4;
+
+    for (int trick = 0; trick < 5; ++trick) {
+        // 1. lead card
+        // 2. others play their cards
+        // 3. find the winner
+        // 4. then update leader_idx for next trick
+    }
+    
+    // update_scores(team1_tricks, team2_tricks, orderer_idx);
+}
+
     // play_tricks(trump, orderer_idx); 
 }
 };
