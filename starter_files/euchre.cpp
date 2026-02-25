@@ -120,4 +120,7 @@ class Game {
         }
         current_player = (current_player + 1) % 4;
     }
+    upcard = pack.deal_one();
+    cout << players[dealer_idx]->get_name() << " deals" << endl;
+    cout << upcard << " turned up" << endl;
 };
