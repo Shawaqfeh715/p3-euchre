@@ -75,7 +75,8 @@ private:
                 int p = (dealer_idx + i) % 4;
                 if (players[p]->make_trump(upcard, (p == dealer_idx), round, trump)) {
                     orderer = p;
-                    cout << players[p]->get_name() << " orders up " << trump << endl << endl;
+                    cout << players[p]->get_name() << " orders up " << trump 
+                    << endl << endl;
                     if (round == 1) players[dealer_idx]->add_and_discard(upcard);
                 } else {
                     cout << players[p]->get_name() << " passes" << endl;
@@ -85,7 +86,6 @@ private:
         play_tricks(trump, orderer);
     }
 
-    // Refactored to reduce NCSS (Non-Commenting Source Statements)
     void update_score(int t1_tricks, int orderer) {
         bool t1_ord = (orderer == 0 || orderer == 2);
         if (t1_tricks > 2) {
@@ -147,8 +147,11 @@ int main(int argc, char **argv) {
     for (int i = 4; i < 12; i += 2) {
         players.push_back(Player_factory(argv[i], argv[i+1]));
     }
-    Game game(players, pack, stoi(argv[3]), (string(argv[2]) == "shuffle"));
+    
+    Game game(players,
+          pack,
+          stoi(argv[3]),
+          (string(argv[2]) == "shuffle"));
     game.play();
     for (Player* p : players) delete p;
     return 0;
-}

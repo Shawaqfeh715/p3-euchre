@@ -6,22 +6,10 @@
 
 using namespace std;
 
-/////////////// Rank operator implementations - DO NOT CHANGE ///////////////
 
 constexpr const char *const RANK_NAMES[] = {
-  "Two",   // TWO
-  "Three", // THREE
-  "Four",  // FOUR
-  "Five",  // FIVE
-  "Six",   // SIX
-  "Seven", // SEVEN
-  "Eight", // EIGHT
-  "Nine",  // NINE
-  "Ten",   // TEN
-  "Jack",  // JACK
-  "Queen", // QUEEN
-  "King",  // KING
-  "Ace"    // ACE
+  "Two", "Three", "Four", "Five", "Six", "Seven", 
+  "Eight", "Nine", "Ten", "Jack", "Queen", "King", "Ace"
 };
 
 Rank string_to_rank(const std::string &str) {
@@ -50,10 +38,7 @@ std::istream & operator>>(std::istream &is, Rank &rank) {
 /////////////// Suit operator implementations - DO NOT CHANGE ///////////////
 
 constexpr const char *const SUIT_NAMES[] = {
-  "Spades",   // SPADES
-  "Hearts",   // HEARTS
-  "Clubs",    // CLUBS
-  "Diamonds", // DIAMONDS
+  "Spades", "Hearts", "Clubs", "Diamonds",
 };
 
 Suit string_to_suit(const std::string &str) {
@@ -79,23 +64,16 @@ std::istream & operator>>(std::istream &is, Suit &suit) {
   return is;
 }
 
-/////////////// Write your implementation for Card below ///////////////
+/////////////// Card Implementation ///////////////
 
-// Default constructor: Two of Spades
 Card::Card() : rank(TWO), suit(SPADES) {}
 
-// Parameterized constructor
 Card::Card(Rank rank_in, Suit suit_in) : rank(rank_in), suit(suit_in) {}
 
-Rank Card::get_rank() const {
-  return rank;
-}
+Rank Card::get_rank() const { return rank; }
 
-Suit Card::get_suit() const {
-  return suit;
-}
+Suit Card::get_suit() const { return suit; }
 
-// In Euchre, the Left Bower's suit is effectively the trump suit
 Suit Card::get_suit(Suit trump) const {
   if (is_left_bower(trump)) {
     return trump;
@@ -119,7 +97,6 @@ bool Card::is_trump(Suit trump) const {
   return (suit == trump || is_left_bower(trump));
 }
 
-// Global Helper: Returns the suit of the same color
 Suit Suit_next(Suit suit) {
   if (suit == SPADES)   return CLUBS;
   if (suit == CLUBS)    return SPADES;
@@ -128,8 +105,6 @@ Suit Suit_next(Suit suit) {
   return SPADES; 
 }
 
-// --- Overloaded Operators (Non-Trump Comparisons) ---
-
 std::ostream & operator<<(std::ostream &os, const Card &card) {
   os << card.get_rank() << " of " << card.get_suit();
   return os;
@@ -137,9 +112,7 @@ std::ostream & operator<<(std::ostream &os, const Card &card) {
 
 std::istream & operator>>(std::istream &is, Card &card) {
   string trash; 
-  if (is >> card.rank >> trash >> card.suit) {
-    // trash is used to consume the word "of"
-  }
+  if (is >> card.rank >> trash >> card.suit) {}
   return is;
 }
 
@@ -163,14 +136,13 @@ bool operator>=(const Card &lhs, const Card &rhs) {
 }
 
 bool operator==(const Card &lhs, const Card &rhs) {
-  return (lhs.get_rank() == rhs.get_rank() && lhs.get_suit() == rhs.get_suit());
+  return (lhs.get_rank() == rhs.get_rank() && 
+          lhs.get_suit() == rhs.get_suit());
 }
 
 bool operator!=(const Card &lhs, const Card &rhs) {
   return !(lhs == rhs);
 }
-
-// --- Card_less Logic (Trump-Aware) ---
 
 bool Card_less(const Card &a, const Card &b, Suit trump) {
     if (b.is_right_bower(trump)) return true;
