@@ -146,15 +146,13 @@ private:
                 cout << "euchred!" << endl; team2_score += 2; 
             }
         }
-        cout << endl; // Important: space after winners/march/euchred and before scores
+        cout << endl; // Blank line before score summary
     }
 };
 
 int main(int argc, char **argv) {
     if (argc != 12) {
-        cout << "Usage: euchre.exe PACK_FILENAME [shuffle|noshuffle] "
-             << "POINTS_TO_WIN NAME1 TYPE1 NAME2 TYPE2 NAME3 TYPE3 "
-             << "NAME4 TYPE4" << endl;
+        cout << "Usage: euchre.exe PACK_FILENAME [shuffle|noshuffle] POINTS_TO_WIN NAME1 TYPE1 NAME2 TYPE2 NAME3 TYPE3 NAME4 TYPE4" << endl;
         return 1;
     }
 
@@ -164,9 +162,7 @@ int main(int argc, char **argv) {
 
     if ((shuffle_arg != "shuffle" && shuffle_arg != "noshuffle") || 
         (points_to_win < 1 || points_to_win > 100)) {
-        cout << "Usage: euchre.exe PACK_FILENAME [shuffle|noshuffle] "
-             << "POINTS_TO_WIN NAME1 TYPE1 NAME2 TYPE2 NAME3 TYPE3 "
-             << "NAME4 TYPE4" << endl;
+        cout << "Usage: euchre.exe PACK_FILENAME [shuffle|noshuffle] POINTS_TO_WIN NAME1 TYPE1 NAME2 TYPE2 NAME3 TYPE3 NAME4 TYPE4" << endl;
         return 1;
     }
 
@@ -178,29 +174,25 @@ int main(int argc, char **argv) {
 
     vector<Player*> players;
     for (int i = 4; i < 12; i += 2) {
-        string name = argv[i];
-        string type = argv[i+1];
+        string name = argv[i], type = argv[i+1];
         if (type != "Simple" && type != "Human") {
-            cout << "Usage: euchre.exe PACK_FILENAME [shuffle|noshuffle] "
-                 << "POINTS_TO_WIN NAME1 TYPE1 NAME2 TYPE2 NAME3 TYPE3 "
-                 << "NAME4 TYPE4" << endl;
+            cout << "Usage: euchre.exe PACK_FILENAME [shuffle|noshuffle] POINTS_TO_WIN NAME1 TYPE1 NAME2 TYPE2 NAME3 TYPE3 NAME4 TYPE4" << endl;
             for (Player* p : players) delete p;
             return 1;
         }
         players.push_back(Player_factory(name, type));
     }
 
-    // Spec Requirement: Executable and all args on one line, ending with a space.
+    // Spec Requirement: Print all args + trailing space
     for (int i = 0; i < argc; ++i) {
         cout << argv[i] << " ";
     }
     cout << endl;
 
     Pack pack(fin);
-    bool do_shuffle = (shuffle_arg == "shuffle");
-    Game game(players, pack, points_to_win, do_shuffle);
+    Game game(players, pack, points_to_win, (shuffle_arg == "shuffle"));
     game.play();
 
-    for (Player* p : players) { delete p; }
+    for (Player* p : players) delete p;
     return 0;
 }
