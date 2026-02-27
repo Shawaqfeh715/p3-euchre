@@ -73,7 +73,8 @@ private:
         for (int round = 1; round <= 2 && orderer == -1; ++round) {
             for (int i = 1; i <= 4 && orderer == -1; ++i) {
                 int p = (dealer_idx + i) % 4;
-                if (players[p]->make_trump(upcard, (p == dealer_idx), round, trump)) {
+                if (players[p]->make_trump(upcard, 
+                    (p == dealer_idx), round, trump)) {
                     orderer = p;
                     cout << players[p]->get_name() << " orders up " << trump 
                     << endl << endl;
