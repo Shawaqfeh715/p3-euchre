@@ -1,0 +1,62 @@
+./euchre.exe pack.in noshuffle 1 Adi Human Barbara Simple Chi-Chih Simple Dabbala Simple 
+Hand 0
+Adi deals
+Jack of Diamonds turned up
+Barbara passes
+Chi-Chih passes
+Dabbala passes
+Human player Adi's hand: [0] Nine of Diamonds
+Human player Adi's hand: [1] Ten of Diamonds
+Human player Adi's hand: [2] Jack of Hearts
+Human player Adi's hand: [3] Queen of Hearts
+Human player Adi's hand: [4] Ace of Clubs
+Human player Adi, please enter a suit, or "pass":
+Adi passes
+Barbara orders up Hearts
+
+Jack of Spades led by Barbara
+King of Spades played by Chi-Chih
+Ace of Spades played by Dabbala
+Human player Adi's hand: [0] Nine of Diamonds
+Human player Adi's hand: [1] Ten of Diamonds
+Human player Adi's hand: [2] Jack of Hearts
+Human player Adi's hand: [3] Queen of Hearts
+Human player Adi's hand: [4] Ace of Clubs
+Human player Adi, please select a card:
+Nine of Diamonds played by Adi
+Dabbala takes the trick
+
+King of Clubs led by Dabbala
+Human player Adi's hand: [0] Ten of Diamonds
+Human player Adi's hand: [1] Jack of Hearts
+Human player Adi's hand: [2] Queen of Hearts
+Human player Adi's hand: [3] Ace of Clubs
+Human player Adi, please select a card:
+Jack of Hearts played by Adi
+Nine of Spades played by Barbara
+Jack of Clubs played by Chi-Chih
+Adi takes the trick
+
+Human player Adi's hand: [0] Ten of Diamonds
+Human player Adi's hand: [1] Queen of Hearts
+Human player Adi's hand: [2] Ace of Clubs
+Human player Adi, please select a card:
+Queen of Hearts led by Adi
+Ace of Hearts played by Barbara
+Nine of Clubs played by Chi-Chih
+Ten of Hearts played by Dabbala
+Barbara takes the trick
+
+Ten of Spades led by Barbara
+Queen of Spades played by Chi-Chih
+Queen of Clubs played by Dabbala
+Human player Adi's hand: [0] Ten of Diamonds
+Human player Adi's hand: [1] Ace of Clubs
+Human player Adi, please select a card:
+Ace of Clubs played by Adi
+Chi-Chih takes the trick
+
+Ten of Clubs led by Chi-Chih
+Nine of Hearts played by Dabbala
+Human player Adi's hand: [0] Ten of Diamonds
+Human player Adi, please select a card:
